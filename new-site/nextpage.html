@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+    <p><center>Notable Projects</center></p>
+    <p><center>Wordnet</center></p>
+    In this project, I'll create a tool that allows users to explore hyponyms (more specific words) of input words and analyze their relative frequencies over time. I'll need to parse WordNet's dataset, create a graph representing synsets and their relationships, and implement a hyponym lookup mechanism. Users can enter single or multiple words, specify a time frame, and set a limit on the number of hyponyms to retrieve. The project also involves adding new buttons to the NGordnet interface and creating JavaScript handlers to facilitate interactions between the front end and back end.
+    <p><center> Notable Languages and Skills: Java </center></p>
+    <p><center>Outdoor Guardian</center></p>
+    <img src="circuitboard.webp" alt="Circuit" width="300" height="333"> <img src="completeddevice.webp" alt="Device" width = '300' height = '300'>
+    <p><left> An ESP32 based device, Outdoor Guardian was designed to be a cost effective and small form factor safety product for outdoor enthusiasts. 
+    Utilizing LoRaWAN, users are able to transmit their heart rate data and GPS location (longitude and latitude). 
+    When users' heart rates drop or rise too quickly, an emergency signal is cast to the other LoRaWAN device with a message and beep alerting to someone in danger.
+    This mode will send the endangered person's location, distance, and direction based on the rescuer's device. In addition to this, users can send and receive audio over a 
+    mesh network at the press of a button. Boasting over a 5km range, LoRaWAN is ideal for 
+    pairs or groups of people in outdoor settings. 
+    </left></p>
+    <p><center> Notable Languages and Skills: Microcontroller and circuit design, Micropython, C </center></p>
+    <p><center>Face Recognition Security Camera</center></p>
+    <p><left>Using ESP32-CAM and TinyML, I developed a security camera that can recognize and identify you based on your face. Models were trained on a 70/30 split with 70 percent of the 
+        model training being performed on the laptop and 30 percent on the ESP32 itself. The camera uses an I2S speaker, microphone, and amplifier to allow for communication between myself
+        and whoever is outside. The ESP32-CAM connects wireless to any device within my network, and users are able to see a livefeed of whoever approaches the door. Future iterations will
+        include the ability to unlock the door based on facial and vocal recognition.
+    </left></p>
+    <!-- <p><center>Simple Watercooling Temp Gauge</center></p>
+    <p><left>My computer's motherboard did not have support for a temperature gauge, so I used an STM32 board to create one. This device was ported to C and Lingua Franca for more support.</left></p> -->
+
+    <p><center>Grojo's World</center></p>
+    <p><left>I've developed a 2D Java game where players explore procedurally generated worlds using seed inputs. Their goal is to collect food for survival and progression while beating a timer that decreases in time each level.
+         The game offers save functionality for convenience and includes a safety net that grants players a second chance in a new randomly generated room 
+         if they fail, with game over only occurring after the second chance.
+    </left></p>
+    <p><center>Spam and Ham Classifier</center></p>
+    <p><left>In this project, I focused on enhancing the accuracy of a spam email filter system, aiming to achieve a minimum accuracy of 85% on both the training and test datasets. 
+        To accomplish this, I conducted thorough exploratory data analysis (EDA) and leveraged linear algebra techniques for feature engineering. This involved creating new features based on email content, such as character and word counts, punctuation usage, and HTML text extraction. 
+        Additionally, I processed email data to extract meaningful text from HTML content, explored HTML tags as potential features, and fine-tuned logistic regression models using GridSearchCV with cross-validation to prevent overfitting. 
+        This project not only improved the spam filter's accuracy but also showcased my proficiency in data preprocessing, feature engineering, and model selection.
+    </left></p>
+    <p><center>Cryptographically Secure End-to-End File Sharing</center></p>
+    <p><left>The project involves the creation of a secure file sharing system in Go, akin to Dropbox, with a primary focus on cryptographic security. Users can securely register and log in, and their credentials are hashed and stored. 
+        Files are encrypted using AES-CTR encryption with unique keys for each file, and users can save, overwrite, and append to files with encryption and decryption built in. Secure file sharing is enabled through encrypted access tokens, and users can revoke access. 
+        The server is designed to be tamper-resistant, and key management ensures secure storage and retrieval of encryption keys. Error handling, logging, thorough testing, and user-friendly documentation complete the system, delivering a robust and secure file sharing platform.</left></p>
+
+    <p><left>I am currently working on porting some of my favorite embedded projects to Lingua Franca for better real-time scheduling support! In addition to this, I am interested in
+        developing cyber-physical systems with hard real-time constraints as well!
+    </left></p>
+</body>
+</html>
