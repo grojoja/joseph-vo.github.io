@@ -30,3 +30,7 @@ function toggleNightMode() {
   
     initializeNightMode();
   });
+  function toggleText() {
+    var element = document.querySelector('.image-button');
+    element.classList.toggle('expanded');
+}

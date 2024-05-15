@@ -200,7 +200,7 @@ textarea {
   color: white;  /* Light text color for night mode */
 }
 .dropdown-content.nightmode{
-  background-color: rgb(157, 180, 148);  /* Dark background for night mode */
+  background-color: rgb(238, 255, 4);  /* Dark background for night mode */
   color: black;  /* Light text color for night mode */
 }
 .dropbtn:hover + .dropdown-content, .dropdown-content:hover {
@@ -224,6 +224,15 @@ textarea {
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
+}
+body.night-mode {
+  background-color: #000000; /* Dark mode background */
+  color: white; /* Dark mode text color */
+}
+
+body.night-mode .project-container {
+  background-color: #000000; /* Dark mode background for containers */
+  color: white; /* Dark mode text color */
 }
 .dropdown-content a:hover {
   background-color: #f1f1f1;
@@ -251,7 +260,51 @@ body {
   background-color: #e70c0c; /* Lighter shade when hovered */
 }
 
+.image-button {
+  position: relative;
+  width: 300px; /* or any size you prefer */
+  cursor: pointer;
+  overflow: hidden; /* Ensures nothing spills outside */
+}
 
+.image-button img {
+  width: 100%;
+  display: block; /* removes bottom margin/gap */
+  transition: transform 0.3s ease; /* Smooth transition for image transform */
+}
+
+.text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white;
+  visibility: hidden; /* Hidden by default */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border: none;
+}
+
+.image-button.expanded img {
+  transform: scale(1.2); /* Slightly enlarge the image */
+}
+
+.image-button.expanded .text-container {
+  visibility: visible;
+  opacity: 1;
+}
+
+.project-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px 0;
+  background-color: white; /* Light mode background for containers */
+  transition: background-color 0.3s; /* Smooth transition for background */
+  border: none;
+}
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
