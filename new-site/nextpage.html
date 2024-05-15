@@ -1,5 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="en">
+<script src="js/app.js"></script>
 
 <head>
   <meta charset="utf-8">
@@ -20,20 +21,35 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#fafafa">
 </head>
-
-<body>
+<div class="dropdown">
+    <button class="dropbtn">
+        <img src="R.png" alt="Toggle Night Mode" id="nightModeImage" width = "100" height = "50">
+      </button>
+    <div class="dropdown-content">
+      <a href="landingpage.html">Home</a>
+      <a href="coursework.html">Courseworks </a>
+      <a href="nextpage.html"> Projects</a>
+    </div>
+  </div>
+  <div class = "position-container">
+  <button class = "position-button" id="nightModeButton" onclick="toggleNightMode()">
+    <img src="Cheeseburger.png" alt="Toggle Night Mode" id="nightModeImage" width = "100" height = "50">
+  </button>
+  </div>
     <p><center>Notable Projects</center></p>
     <p><center>Wordnet</center></p>
     In this project, I'll create a tool that allows users to explore hyponyms (more specific words) of input words and analyze their relative frequencies over time. I'll need to parse WordNet's dataset, create a graph representing synsets and their relationships, and implement a hyponym lookup mechanism. Users can enter single or multiple words, specify a time frame, and set a limit on the number of hyponyms to retrieve. The project also involves adding new buttons to the NGordnet interface and creating JavaScript handlers to facilitate interactions between the front end and back end.
     <p><center> Notable Languages and Skills: Java </center></p>
     <p><center>Outdoor Guardian</center></p>
-    <img src="circuitboard.webp" alt="Circuit" width="300" height="333"> <img src="completeddevice.webp" alt="Device" width = '300' height = '300'>
+    <center><img src="circuitboard.webp" alt="Circuit" width="300" height="333"> <img src="completeddevice.webp" alt="Device" width = '300' height = '300'></center>
     <p><left> An ESP32 based device, Outdoor Guardian was designed to be a cost effective and small form factor safety product for outdoor enthusiasts. 
     Utilizing LoRaWAN, users are able to transmit their heart rate data and GPS location (longitude and latitude). 
     When users' heart rates drop or rise too quickly, an emergency signal is cast to the other LoRaWAN device with a message and beep alerting to someone in danger.
     This mode will send the endangered person's location, distance, and direction based on the rescuer's device. In addition to this, users can send and receive audio over a 
     mesh network at the press of a button. Boasting over a 5km range, LoRaWAN is ideal for 
     pairs or groups of people in outdoor settings. 
+
+    <a href = "https://drive.google.com/file/d/12CsnDIeKWx1BGUn-K_awbz78MjrzEplA/view?usp=sharing"> Video Demo!</a>
     </left></p>
     <p><center> Notable Languages and Skills: Microcontroller and circuit design, Micropython, C </center></p>
     <p><center>Face Recognition Security Camera</center></p>
@@ -50,7 +66,9 @@
          The game offers save functionality for convenience and includes a safety net that grants players a second chance in a new randomly generated room 
          if they fail, with game over only occurring after the second chance.
     </left></p>
-    <p><center>Spam and Ham Classifier</center></p>
+    <center> <iframe width="560" height="315" src="https://www.youtube.com/embed/lBytgLY22CU?si=9VyeNMYX_6Q1LO0Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </center>
+        <p><center>Spam and Ham Classifier</center></p>
     <p><left>In this project, I focused on enhancing the accuracy of a spam email filter system, aiming to achieve a minimum accuracy of 85% on both the training and test datasets. 
         To accomplish this, I conducted thorough exploratory data analysis (EDA) and leveraged linear algebra techniques for feature engineering. This involved creating new features based on email content, such as character and word counts, punctuation usage, and HTML text extraction. 
         Additionally, I processed email data to extract meaningful text from HTML content, explored HTML tags as potential features, and fine-tuned logistic regression models using GridSearchCV with cross-validation to prevent overfitting. 

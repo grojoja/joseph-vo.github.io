@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheeseburger Landing Page</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+        .burger {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        .burger-part {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        .burger-part:hover {
+            transform: scale(1.05);
+        }
+        .top-bun {
+            background-color: #f4a460;
+            border-radius: 50% 50% 0 0;
+        }
+        .lettuce {
+            background-color: #76b947;
+        }
+        .cheese {
+            background-color: #ffa600;
+        }
+        .patty {
+            background-color: #703b09;
+        }
+        .bottom-bun {
+            background-color: #f4a460;
+            border-radius: 0 0 50% 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="burger">
+        <a href="#home" class="burger-part top-bun">Home</a>
+        <a href="#about" class="burger-part lettuce">About</a>
+        <a href="#services" class="burger-part cheese">Services</a>
+        <a href="#portfolio" class="burger-part patty">Portfolio</a>
+        <a href="#contact" class="burger-part bottom-bun">Contact</a>
+    </div>
+    <div class = "position-container">
+    </div>
+</body>
+</html>
