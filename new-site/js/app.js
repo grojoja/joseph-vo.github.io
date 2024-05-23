@@ -34,3 +34,24 @@ function toggleNightMode() {
     var element = document.querySelector('.image-button');
     element.classList.toggle('expanded');
 }
+document.addEventListener('DOMContentLoaded', () => {
+  const page1 = document.getElementById('page1');
+  page1.addEventListener('click', () => {
+      page1.classList.toggle('flipped');
+      if (page1.classList.contains('flipped')) {
+          page1.style.zIndex = 1;
+          document.getElementById('page2').style.zIndex = 2;
+      } else {
+          page1.style.zIndex = 2;
+          document.getElementById('page2').style.zIndex = 1;
+      }
+  });
+});
+
+function toggleDropdown() {
+  var dropdownmenu = document.getElementById("myDropdown");
+  dropdownmenu.classList.toggle("show")
+}
+
+
+

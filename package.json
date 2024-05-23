@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "parcel": "^2.10.3"
+    "cors": "^2.8.5",
+    "parcel": "^2.10.3",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "@parcel/transformer-webmanifest": "2.10.3"

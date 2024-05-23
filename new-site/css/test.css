@@ -1,0 +1,10 @@
+.image-container {
+    text-align: center; /* Center the image container */
+    margin-top: 20px;
+}
+
+img {
+    max-width: 100%; /* Responsive image size */
+    transition: transform 0.2s ease; /* Smooth transformation */
+    cursor: grab; /* Indicates that the image can be grabbed */
+}

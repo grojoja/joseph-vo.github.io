@@ -298,13 +298,50 @@ body.night-mode .project-container {
 }
 
 .project-container {
-  border: 1px solid #ccc;
+  max-width: 600px;
+  margin: 0 auto;
   padding: 20px;
-  margin: 20px 0;
-  background-color: white; /* Light mode background for containers */
-  transition: background-color 0.3s; /* Smooth transition for background */
-  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: 'Montserrat', sans-serif;
 }
+
+/* Title styles */
+.project-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Description styles */
+.project-description {
+  font-size: 16px;
+  color: #666666;
+  line-height: 1.5;
+}
+body {
+  font-family: Arial, sans-serif;
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+thead {
+  background-color: var(--header-bg-color);
+}
+
+
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
