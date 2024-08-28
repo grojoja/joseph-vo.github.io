@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joseph Vo - Projects</title>
+  <meta name="description" content="Joseph Vo's Projects Page">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .navbar {
+      width: 100%;
+      background-color: #fff;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .navbar a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin-top: 50px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 50px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #e63946;
+      padding-bottom: 10px;
+    }
+
+    .card {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .card p {
+      margin: 8px 0 0;
+      line-height: 1.6;
+    }
+
+    .card .year {
+      display: inline-block;
+      background-color: #e63946;
+      color: white;
+      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 5px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .card ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    .card ul li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="navbar">
+    <a href="currentwork.html">about</a>
+    <a href="projects.html" style="color:#9540db; font-weight: bold;">projects</a>
+    <a href="coursework.html">coursework</a>
+    <a href="cv.html">coursework</a>
+  </div>
+
+  <div class="container">
+    <div class="section">
+      <div class="section-title">Projects</div>
+
+      <div class="card">
+        <h3>Cryptographically Secure End-to-End File Sharing</h3>
+        <p>The project involves the creation of a secure file sharing system in Go, akin to Dropbox, with a primary focus on cryptographic security. Users can securely register and log in, and their credentials are hashed and stored. Files are encrypted using AES-CTR encryption with unique keys for each file, and users can save, overwrite, and append to files with encryption and decryption built in. Secure file sharing is enabled through encrypted access tokens, and users can revoke access. The server is designed to be tamper-resistant, and key management ensures secure storage and retrieval of encryption keys.</p>
+        <p><b>Notable Languages and Skills:</b> Go</p>
+      </div>
+
+      <div class="card">
+        <h3>3 Stage RISC-V Pipelined CPU</h3>
+        <p>We developed a RISC-V pipelined CPU with a three-stage pipeline structure, achieving a clock speed of 111MHz. Key submodules such as Instruction Fetch, Execute, and Memory Access were designed to optimize performance. Testing and verification procedures involved unit testing, integration testing, and validation on physical hardware, ensuring functional correctness and meeting timing criteria.</p>
+        <p><b>Notable Languages and Skills:</b> Verilog, Vivado, FPGA Debugging</p>
+      </div>
+
+      <div class="card">
+        <h3>Useful/Useless Reddit Comment Classification</h3>
+        <p>We utilized logistic regression with n-grams, bag of words, and word2vec embeddings to develop a classifier distinguishing helpful from unhelpful comments, leveraging the Reddit API for data collection. Future plans include exploring deep learning architectures to enhance the model's robustness.</p>
+        <p><b>Notable Languages and Skills:</b> Python, matplotlib, scikit-learn, praw, nltk</p>
+      </div>
+
+      <div class="card">
+        <h3>Wordnet</h3>
+        <p>I created a tool that allows users to explore hyponyms (more specific words) of input words and analyze their relative frequencies over time. The project involved parsing WordNet's dataset, creating a graph representing synsets and their relationships, and implementing a hyponym lookup mechanism.</p>
+        <p><b>Notable Languages and Skills:</b> Java</p>
+      </div>
+
+      <div class="card">
+        <h3>Outdoor Guardian</h3>
+        <p>Outdoor Guardian is an ESP32-based device designed to be a cost-effective safety product for outdoor enthusiasts. It uses LoRaWAN to transmit heart rate data and GPS location. In emergency scenarios, it sends signals to alert others, along with the endangered person's location and direction.</p>
+        <p><b>Notable Languages and Skills:</b> Microcontroller and circuit design, Micropython, C</p>
+      </div>
+
+      <div class="card">
+        <h3>Face Recognition Security Camera</h3>
+        <p>I developed a security camera using ESP32-CAM and TinyML that recognizes and identifies users based on their face. It also allows two-way communication and remote viewing via a live feed.</p>
+        <p><b>Notable Languages and Skills:</b> Microcontroller and circuit design, Micropython, C</p>
+      </div>
+
+      <div class="card">
+        <h3>Grojo's World</h3>
+        <p>I developed a 2D Java game where players explore procedurally generated worlds using seed inputs. Players collect food for survival and progression, with a timer that decreases with each level.</p>
+        <p><b>Notable Languages and Skills:</b> Java</p>
+        <center> <iframe width="560" height="315" src="https://www.youtube.com/embed/lBytgLY22CU?si=9VyeNMYX_6Q1LO0Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></center>
+      </div>
+
+      <div class="card">
+        <h3>Spam and Ham Classifier</h3>
+        <p>I focused on enhancing the accuracy of a spam email filter system. I conducted exploratory data analysis and leveraged linear algebra techniques for feature engineering to improve the filter's accuracy.</p>
+        <p><b>Notable Languages and Skills:</b> Python, GridSearchCV, Logistic Regression</p>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+
+</html>
