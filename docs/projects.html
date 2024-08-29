@@ -75,24 +75,45 @@
       line-height: 1.6;
     }
 
-    .card .year {
-      display: inline-block;
-      background-color: #e63946;
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 300px; /* Fixed width for the carousel */
+      margin: 15px auto; /* Center the carousel container */
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .carousel-images img {
+      width: 100%; /* Ensure that each image takes up the full carousel width */
+      border-radius: 8px;
+    }
+
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
       color: white;
-      font-size: 12px;
-      padding: 3px 8px;
-      border-radius: 5px;
-      margin-right: 10px;
-      vertical-align: middle;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 1;
     }
 
-    .card ul {
-      margin-top: 10px;
-      padding-left: 20px;
+    .carousel-button.left {
+      left: -5px; /* Move the left button outside the image */
     }
 
-    .card ul li {
-      margin-bottom: 5px;
+    .carousel-button.right {
+      right: -5px; /* Move the right button outside the image */
     }
   </style>
 </head>
@@ -103,12 +124,27 @@
     <a href="index.html">about</a>
     <a href="projects.html" style="color:#9540db; font-weight: bold;">projects</a>
     <a href="coursework.html">coursework</a>
-    <a href="cv.html">coursework</a>
+    <a href="cv.html">cv</a>
   </div>
 
   <div class="container">
     <div class="section">
       <div class="section-title">Projects</div>
+
+      <div class="card">
+        <h3>Outdoor Guardian</h3>
+        <p>Outdoor Guardian is an ESP32-based device designed to be a cost-effective safety product for outdoor enthusiasts. It uses LoRaWAN to transmit heart rate data and GPS location. In emergency scenarios, it sends signals to alert others, along with the endangered person's location and direction.</p>
+        <div class="carousel-container">
+          <button class="carousel-button left" onclick="moveCarousel(-1)">&#10094;</button>
+          <div class="carousel-images" id="carousel-images">
+            <img src="videodemo.png" alt="Video Demo">
+            <img src="completeddevice.webp" alt="Completed Device">
+            <img src="circuitboard.webp" alt="Circuit Board">
+          </div>
+          <button class="carousel-button right" onclick="moveCarousel(1)">&#10095;</button>
+        </div>
+        <p><b>Notable Languages and Skills:</b> Microcontroller and circuit design, Micropython, C</p>
+      </div>
 
       <div class="card">
         <h3>Cryptographically Secure End-to-End File Sharing</h3>
@@ -135,12 +171,6 @@
       </div>
 
       <div class="card">
-        <h3>Outdoor Guardian</h3>
-        <p>Outdoor Guardian is an ESP32-based device designed to be a cost-effective safety product for outdoor enthusiasts. It uses LoRaWAN to transmit heart rate data and GPS location. In emergency scenarios, it sends signals to alert others, along with the endangered person's location and direction.</p>
-        <p><b>Notable Languages and Skills:</b> Microcontroller and circuit design, Micropython, C</p>
-      </div>
-
-      <div class="card">
         <h3>Face Recognition Security Camera</h3>
         <p>I developed a security camera using ESP32-CAM and TinyML that recognizes and identifies users based on their face. It also allows two-way communication and remote viewing via a live feed.</p>
         <p><b>Notable Languages and Skills:</b> Microcontroller and circuit design, Micropython, C</p>
@@ -149,8 +179,10 @@
       <div class="card">
         <h3>Grojo's World</h3>
         <p>I developed a 2D Java game where players explore procedurally generated worlds using seed inputs. Players collect food for survival and progression, with a timer that decreases with each level.</p>
+        <center>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/lBytgLY22CU?si=9VyeNMYX_6Q1LO0Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </center>
         <p><b>Notable Languages and Skills:</b> Java</p>
-        <center> <iframe width="560" height="315" src="https://www.youtube.com/embed/lBytgLY22CU?si=9VyeNMYX_6Q1LO0Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></center>
       </div>
 
       <div class="card">
@@ -161,6 +193,27 @@
 
     </div>
   </div>
+
+  <script>
+    let currentIndex = 0;
+
+    function moveCarousel(direction) {
+      const carousel = document.getElementById('carousel-images');
+      const images = carousel.querySelectorAll('img');
+      const totalImages = images.length;
+      currentIndex += direction;
+
+      if (currentIndex < 0) {
+        currentIndex = totalImages - 1;
+      } else if (currentIndex >= totalImages) {
+        currentIndex = 0;
+      }
+
+      const imageWidth = carousel.clientWidth; // Use the container's width to adjust the carousel
+      const offset = -currentIndex * imageWidth;
+      carousel.style.transform = `translateX(${offset}px)`;
+    }
+  </script>
 
 </body>
 
