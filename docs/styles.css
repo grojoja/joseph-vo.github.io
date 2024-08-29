@@ -1,0 +1,210 @@
+:root {
+    --bg-color-light: #f9f9f9;
+    --text-color-light: #333;
+    --bg-color-dark: #121212;
+    --text-color-dark: #e0e0e0;
+    --card-bg-light: #ffffff;
+    --card-bg-dark: #1e1e1e;
+    --nav-bg-light: #ffffff;
+    --nav-bg-dark: #1e1e1e;
+    --border-color-light: #e63946;
+    --border-color-dark: #bb86fc;
+    --highlight-color-light: #9540db;
+    --highlight-color-dark: #bb86fc;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar {
+    width: 100%;
+    background-color: var(--nav-bg-light);
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.navbar a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: var(--text-color-light);
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.theme-toggle {
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: none; 
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.theme-toggle img {
+    width: 20px;
+    height: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin-top: 50px;
+    background-color: var(--card-bg-light);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+    transition: background-color 0.3s;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--border-color-light);
+    padding-bottom: 10px;
+    transition: border-color 0.3s;
+}
+
+.card {
+    background-color: var(--card-bg-light);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.card h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card h4 {
+    margin: 5px 0;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.card .year {
+    display: inline-block;
+    background-color: var(--highlight-color-light);
+    color: white;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 5px;
+    margin-right: 10px;
+    vertical-align: middle;
+    transition: background-color 0.3s;
+}
+
+.card p {
+    margin: 8px 0 0;
+    line-height: 1.6;
+}
+
+body.dark-mode {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .navbar {
+    background-color: var(--nav-bg-dark);
+}
+
+body.dark-mode .navbar a {
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .container {
+    background-color: var(--card-bg-dark);
+}
+
+body.dark-mode .card {
+    background-color: var(--card-bg-dark);
+}
+
+body.dark-mode .theme-toggle {
+    background-color: var(--card-bg-dark);
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .theme-toggle img {
+    filter: invert(100%);
+}
+
+body.dark-mode .section-title {
+    border-color: var(--border-color-dark);
+}
+
+body.dark-mode .card .year {
+    background-color: var(--highlight-color-dark);
+}
+
+.highlight {
+    color: var(--highlight-color-light);
+}
+
+body.dark-mode .highlight {
+    color: var(--highlight-color-dark);
+}
+
+/* Carousel Styles */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 15px auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-images img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.carousel-button.left {
+    left: -5px;
+}
+
+.carousel-button.right {
+    right: -5px;
+}

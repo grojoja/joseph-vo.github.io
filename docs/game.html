@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Quiz Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .choices {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .choice-box {
+            background-color: #e63946;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 45%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .choice-box:hover {
+            background-color: #d62828;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .result {
+            font-size: 24px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="question" id="question">You are in a group project. How do you approach it?</div>
+        <div class="choices">
+            <div class="choice-box" onclick="makeChoice('leader')" id="choice1">Take the lead and assign tasks</div>
+            <div class="choice-box" onclick="makeChoice('supporter')" id="choice2">Offer to help where needed</div>
+        </div>
+    </div>
+    <div class="container hidden" id="result-container">
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "You are in a group project. How do you approach it?",
+                choices: {
+                    leader: "Take the lead and assign tasks",
+                    supporter: "Offer to help where needed"
+                }
+            },
+            {
+                question: "You are planning a weekend. What do you prefer?",
+                choices: {
+                    leader: "Organize an outing with friends",
+                    thinker: "Spend time alone reading or thinking"
+                }
+            },
+            {
+                question: "You have a problem to solve. How do you go about it?",
+                choices: {
+                    thinker: "Analyze it thoroughly before acting",
+                    doer: "Jump right in and start solving it"
+                }
+            },
+            {
+                question: "In your free time, you prefer to:",
+                choices: {
+                    doer: "Engage in physical activities",
+                    supporter: "Spend time with family and friends"
+                }
+            },
+            {
+                question: "When working on a project, you prefer to:",
+                choices: {
+                    leader: "Set clear goals and push to achieve them",
+                    thinker: "Consider different approaches before acting"
+                }
+            }
+        ];
+
+        const personalities = {
+            leader: 0,
+            supporter: 0,
+            thinker: 0,
+            doer: 0
+        };
+
+        let currentQuestion = 0;
+
+        function makeChoice(choice) {
+            personalities[choice]++;
+            currentQuestion++;
+
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function loadQuestion() {
+            const questionElement = document.getElementById('question');
+            const choice1Element = document.getElementById('choice1');
+            const choice2Element = document.getElementById('choice2');
+
+            questionElement.textContent = questions[currentQuestion].question;
+            choice1Element.textContent = questions[currentQuestion].choices[Object.keys(questions[currentQuestion].choices)[0]];
+            choice1Element.setAttribute('onclick', `makeChoice('${Object.keys(questions[currentQuestion].choices)[0]}')`);
+            choice2Element.textContent = questions[currentQuestion].choices[Object.keys(questions[currentQuestion].choices)[1]];
+            choice2Element.setAttribute('onclick', `makeChoice('${Object.keys(questions[currentQuestion].choices)[1]}')`);
+        }
+
+        function showResult() {
+            document.querySelector('.container').classList.add('hidden');
+            document.getElementById('result-container').classList.remove('hidden');
+
+            const maxPersonality = Object.keys(personalities).reduce((a, b) => personalities[a] > personalities[b] ? a : b);
+            let resultText;
+
+            switch (maxPersonality) {
+                case 'leader':
+                    resultText = "You are a Leader! You take charge and are great at guiding others.";
+                    break;
+                case 'supporter':
+                    resultText = "You are a Supporter! You excel at helping others and working as part of a team.";
+                    break;
+                case 'thinker':
+                    resultText = "You are a Thinker! You prefer to analyze situations thoroughly before acting.";
+                    break;
+                case 'doer':
+                    resultText = "You are a Doer! You are action-oriented and get things done quickly.";
+                    break;
+            }
+
+            document.getElementById('result').textContent = resultText;
+        }
+    </script>
+</body>
+
+</html>

@@ -7,7 +7,9 @@
     <title>Joseph Vo - Data Science and EECS</title>
     <meta name="description" content="Joseph Vo's Personal Page">
     <link rel="stylesheet" href="styles.css">
+
     <style>
+        /* Custom inline styles for initial rendering */
         body {
             font-family: Arial, sans-serif;
             background-color: #f9f9f9;
@@ -25,7 +27,8 @@
             padding: 10px 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .navbar a {
@@ -33,6 +36,21 @@
             text-decoration: none;
             color: #333;
             font-size: 14px;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            padding: 5px 10px;
+            background-color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .theme-toggle img {
+            width: 20px;
+            height: 20px;
         }
 
         .container {
@@ -67,7 +85,7 @@
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            background-image: url('profile.jpg'); /* Replace with your profile image */
+            background-image: url('profile.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -84,15 +102,29 @@
             margin-right: 15px;
         }
     </style>
+
+    <script>
+        // Inline script to apply theme immediately on page load
+        (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
 </head>
 
 <body>
-
     <div class="navbar">
-        <a href="index.html">about</a>
-        <a href="coursework.html">coursework</a>
-        <a href="projects.html">projects</a>
-        <a href="cv.html">cv</a>
+        <div>
+            <a href="index.html"style="color:#9540db; font-weight: bold;">about</a>
+            <a href="projects.html" >projects</a>
+            <a href="coursework.html">coursework</a>
+            <a href="cv.html">cv</a>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <img src="sun.png" alt="Theme Toggle" id="theme-icon"> <!-- Initial icon for light mode -->
+        </button>
     </div>
 
     <div class="container">
@@ -114,6 +146,7 @@
         <div class="profile-img"></div>
     </div>
 
+    <script src="scripts.js"></script> <!-- Link to external JS -->
 </body>
 
 </html>

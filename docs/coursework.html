@@ -6,99 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Joseph Vo - Coursework</title>
     <meta name="description" content="Joseph Vo's Coursework Page">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
 
-        .navbar {
-            width: 100%;
-            background-color: #fff;
-            padding: 10px 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .navbar a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #333;
-            font-size: 14px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin-top: 50px;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 50px;
-        }
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .section-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e63946;
-            padding-bottom: 10px;
-        }
-
-        .card {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .card h3 {
-            margin: 0;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .card .year {
-            display: inline-block;
-            background-color: #e63946;
-            color: white;
-            font-size: 12px;
-            padding: 3px 8px;
-            border-radius: 5px;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-
-        .card ul {
-            margin-top: 10px;
-            padding-left: 20px;
-        }
-
-        .card ul li {
-            margin-bottom: 5px;
-        }
-    </style>
+    <script>
+        // Inline script to apply theme immediately on page load
+        (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
 </head>
 
 <body>
 
     <div class="navbar">
-        <a href="index.html">about</a>
-        <a href="projects.html">projects</a>
-        <a href="cv.html">cv</a>
-        <a href="coursework.html" style="color: #9540db; font-weight: bold;">coursework</a>
+        <div>
+            <a href="index.html">about</a>
+            <a href="projects.html">projects</a>
+            <a href="coursework.html" style="color: #9540db; font-weight: bold;">coursework</a>
+            <a href="cv.html">cv</a>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <img src="sun.png" alt="Theme Toggle" id="theme-icon"> <!-- Initial icon for light mode -->
+        </button>
     </div>
 
     <div class="container">
@@ -165,6 +97,8 @@
             </div>
         </div>
     </div>
+
+    <script src="scripts.js"></script> <!-- Link to external JS -->
 
 </body>
 

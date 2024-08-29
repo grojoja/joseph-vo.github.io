@@ -6,99 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Joseph Vo - CV</title>
     <meta name="description" content="Joseph Vo's CV Page">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the external CSS file -->
 
-        .navbar {
-            width: 100%;
-            background-color: #fff;
-            padding: 10px 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .navbar a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #333;
-            font-size: 14px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin-top: 50px;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 50px;
-        }
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .section-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e63946;
-            padding-bottom: 10px;
-        }
-
-        .card {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .card h3 {
-            margin: 0;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .card .year {
-            display: inline-block;
-            background-color: #9540db;
-            color: white;
-            font-size: 12px;
-            padding: 3px 8px;
-            border-radius: 5px;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-
-        .card p {
-            margin: 8px 0 0;
-            line-height: 1.6;
-        }
-    </style>
+    <script>
+        // Inline script to apply theme immediately on page load
+        (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
 </head>
 
 <body>
 
     <div class="navbar">
-        <a href="index.html">about</a>
-        <a href="coursework.html">courseworks</a>
-        <a href="projects.html">projects</a>
-        <a href="cv.html" style="color: #9540db; font-weight: bold;">cv</a>
-    </div>
+        <div>
+            <a href="index.html">about</a>
+            <a href="projects.html">projects</a>
+            <a href="coursework.html">courseworks</a>
+            <a href="cv.html" style="color: var(--highlight-color-light); font-weight: bold;">cv</a>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <img src="sun.png" alt="Theme Toggle" id="theme-icon"> <!-- Initial icon for light mode -->
+        </button>   
+     </div>
 
     <div class="container">
-
         <div class="section">
             <div class="section-title">General Information</div>
             <div class="card">
@@ -129,7 +64,6 @@
         </div>
 
         <div class="container">
-
             <div class="section">
                 <div class="section-title">Experience</div>
                 <div class="card">
@@ -152,9 +86,10 @@
                     <div class="year">January 2023 - May 2024</div>
                     <p>As an undergraduate researcher at the Center for Automation and Learning for Medical Robotics (Cal-MR) at UC Berkeley, I had the opportunity to contribute significantly to cutting-edge projects that merged the fields of automation and machine learning with medical technology. My primary role involved developing and refining algorithms that enhance the precision and efficiency of robotic systems used in surgeries. Collaborating closely with a team of expert researchers and engineers, I assisted in the implementation of machine learning models that predict and adapt to various surgical scenarios in real-time, thereby increasing the safety and success rates of medical procedures. This role not only allowed me to apply my technical knowledge in a practical setting but also to contribute to impactful research that could revolutionize medical robotics.</p>
                 </div>
-    
             </div>
         </div>
+
+    <script src="scripts.js"></script> <!-- Link to the external JS file -->
 
 </body>
 
