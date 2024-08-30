@@ -182,7 +182,7 @@
         }
 
         // Fetch the currently playing track info from your server
-        fetch('https://yourserver.com/currently-playing')  // Replace with your actual server URL
+        fetch('localhost:8888/currently-playing')  // Replace with your actual server URL
             .then(response => response.json())
             .then(data => displayTrackInfo(data))
             .catch(error => {
