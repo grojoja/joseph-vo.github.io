@@ -104,15 +104,31 @@ app.get('/callback', async (req, res) => {
 });
 
 // Endpoint to serve the currently playing track
+function formatTime(ms) {
+    const minutes = Math.floor(ms / 6000); 
+    const seconds = ((ms % 60000) / 1000).toFixed(0);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
+
+// Example of how to use this in your currently-playing endpoint
 app.get('/currently-playing', async (req, res) => {
     try {
         const trackData = await getCurrentlyPlayingTrack();
 
         if (trackData && trackData.is_playing) {
+            const trackName = trackData.item.name;
+            const artistName = trackData.item.artists.map(artist => artist.name).join(', ');
+            const albumArt = trackData.item.album.images[0].url;
+            const progress = trackData.progress_ms;
+            const duration = trackData.item.duration_ms;
+
             res.json({
-                track: trackData.item.name,
-                artist: trackData.item.artists.map(artist => artist.name).join(', '),
-                albumArt: trackData.item.album.images[0].url
+                track: trackName,
+                artist: artistName,
+                albumArt: albumArt,
+                progress: formatTime(progress), // Current progress in mm:ss format
+                duration: formatTime(duration), // Total duration in mm:ss format
+                progressPercentage: Math.round((progress / duration) * 100), // Optional: percentage progress
             });
         } else {
             res.json({ message: 'No track currently playing.' });

@@ -101,6 +101,26 @@
             height: 30px;
             margin-right: 15px;
         }
+
+        /* Styles for currently playing track */
+        #track-info {
+            margin: 50px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        #track-info img {
+            border-radius: 10px;
+            width: 100px;
+        }
+
+        #track-info p {
+            margin: 10px 0;
+        }
     </style>
 
     <script>
@@ -118,7 +138,7 @@
     <div class="navbar">
         <div>
             <a href="index.html"style="color:#9540db; font-weight: bold;">about</a>
-            <a href="projects.html" >projects</a>
+            <a href="projects.html">projects</a>
             <a href="coursework.html">coursework</a>
             <a href="cv.html">cv</a>
         </div>
@@ -145,6 +165,31 @@
         </div>
         <div class="profile-img"></div>
     </div>
+
+    <!-- Currently Playing Track Section -->
+    <div id="track-info">
+        <p>Loading currently playing track...</p>
+    </div>
+
+    <script>
+        function displayTrackInfo(data) {
+            const trackInfo = document.getElementById('track-info');
+            trackInfo.innerHTML = `
+                <img src="${data.albumArt}" alt="Album Art">
+                <p><strong>${data.track}</strong> by ${data.artist}</p>
+                <p>Progress: ${data.progress} / ${data.duration} (${data.progressPercentage}%)</p>
+            `;
+        }
+
+        // Fetch the currently playing track info from your server
+        fetch('https://yourserver.com/currently-playing')  // Replace with your actual server URL
+            .then(response => response.json())
+            .then(data => displayTrackInfo(data))
+            .catch(error => {
+                console.error('Error fetching track info:', error);
+                document.getElementById('track-info').innerHTML = `<p>Error loading track info</p>`;
+            });
+    </script>
 
     <script src="scripts.js"></script> <!-- Link to external JS -->
 </body>
