@@ -4,7 +4,7 @@ let currentIndex = 0;
 async function fetchTrackInfo() {
     try {
         // Fetch data from your Node.js server
-        const response = await fetch('http://localhost:8888/currently-playing'); // Replace with your server's URL if deployed
+        const response = await fetch('https://website-for-me-6626ff31f90f.herokuapp.com/currently-playing'); // Replace with your server's URL if deployed
         const data = await response.json();
 
         // Check if there's a track playing and display it
