@@ -144,9 +144,7 @@ app.get('/currently-playing', async (req, res) => {
 
 // Route to handle the root URL "/"
 app.get('/', (req, res) => {
-    res.send('Welcome to the Spotify Currently Playing Tracker!');
-    // Or serve an HTML file:
-    // res.sendFile(path.join(__dirname, 'index.html'));
+    res.redirect('https://josephvo.xyz'); // Replace with your main site's URL
 });
 
 // Start the server
