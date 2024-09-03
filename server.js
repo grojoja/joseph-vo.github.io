@@ -2,6 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const qs = require('querystring');
 const cors = require('cors'); // Import the cors middleware
+const path = require('path'); // Import path module for serving static files
 
 const app = express();
 const port = process.env.PORT || 3000; // Use the port provided by Heroku or default to 3000
@@ -18,6 +19,9 @@ const auth_url = `https://accounts.spotify.com/authorize?response_type=code&clie
 app.use(cors({
     origin: 'https://josephvo.xyz' // Replace with your website's URL
 }));
+
+// Serve static files from the public directory (optional, if you have static files like images, CSS, etc.)
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Function to refresh the access token using the refresh token
 async function getAccessToken() {
@@ -136,6 +140,13 @@ app.get('/currently-playing', async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: 'Error fetching currently playing track.' });
     }
+});
+
+// Route to handle the root URL "/"
+app.get('/', (req, res) => {
+    res.send('Welcome to the Spotify Currently Playing Tracker!');
+    // Or serve an HTML file:
+    // res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Start the server
