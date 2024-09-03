@@ -4,7 +4,7 @@ const qs = require('querystring');
 const cors = require('cors'); // Import the cors middleware
 
 const app = express();
-const port = 8888;
+const port = process.env.PORT || 3000; // Use the port provided by Heroku or default to 3000
 
 const client_id = '391799f6be294d5fa8d9adc63eef9f64';
 const client_secret = '1aff7a93d583406486ce261ed327fa60';
@@ -105,7 +105,7 @@ app.get('/callback', async (req, res) => {
 
 // Endpoint to serve the currently playing track
 function formatTime(ms) {
-    const minutes = Math.floor(ms / 6000); 
+    const minutes = Math.floor(ms / 60000); 
     const seconds = ((ms % 60000) / 1000).toFixed(0);
     return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
@@ -140,6 +140,6 @@ app.get('/currently-playing', async (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+    console.log(`Server running on port ${port}`);
     console.log(`Visit the following URL to authorize the app: ${auth_url}`);
 });
