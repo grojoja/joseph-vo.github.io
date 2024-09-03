@@ -20,9 +20,12 @@ app.use(cors({
     origin: 'https://josephvo.xyz' // Replace with your website's URL
 }));
 
-// Serve the front-end HTML file
+// Serve static files from the 'docs' directory
+app.use(express.static(path.join(__dirname, 'docs')));
+
+// Serve the main HTML file for the root URL ("/")
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'docs', 'index.html'));
 });
 
 // Function to refresh the access token using the refresh token
