@@ -1,11 +1,11 @@
 const express = require('express');
 const axios = require('axios');
 const qs = require('querystring');
-const cors = require('cors'); // Import the cors middleware
-const path = require('path'); // Import path module for serving static files
+const cors = require('cors');
+const path = require('path');
 
 const app = express();
-const port = process.env.PORT || 3000; // Use the port provided by Heroku or default to 3000
+const port = process.env.PORT || 3000;
 
 const client_id = '391799f6be294d5fa8d9adc63eef9f64';
 const client_secret = '1aff7a93d583406486ce261ed327fa60';
@@ -20,8 +20,10 @@ app.use(cors({
     origin: 'https://josephvo.xyz' // Replace with your website's URL
 }));
 
-// Serve static files from the public directory (optional, if you have static files like images, CSS, etc.)
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve the front-end HTML file
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 // Function to refresh the access token using the refresh token
 async function getAccessToken() {
@@ -37,7 +39,7 @@ async function getAccessToken() {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         });
-        access_token = response.data.access_token; // Update the access token with the new one
+        access_token = response.data.access_token;
         console.log('New Access Token obtained:', access_token);
         return access_token;
     } catch (error) {
@@ -57,21 +59,15 @@ async function getCurrentlyPlayingTrack() {
         return response.data;
     } catch (error) {
         if (error.response && error.response.status === 401) {
-            // Access token might have expired, try refreshing it
             console.log('Access token expired, attempting to refresh...');
             await getAccessToken();
-            return getCurrentlyPlayingTrack(); // Retry the request with the new access token
+            return getCurrentlyPlayingTrack(); 
         } else {
             console.error('Error fetching currently playing track:', error.response ? error.response.data : error.message);
             throw error;
         }
     }
 }
-
-// Endpoint to start the authorization process
-app.get('/login', (req, res) => {
-    res.redirect(auth_url);
-});
 
 // Endpoint to handle the callback from Spotify after authorization
 app.get('/callback', async (req, res) => {
@@ -95,8 +91,8 @@ app.get('/callback', async (req, res) => {
             }
         });
 
-        access_token = response.data.access_token; // Save the new access token
-        refresh_token = response.data.refresh_token; // Save the new refresh token
+        access_token = response.data.access_token;
+        refresh_token = response.data.refresh_token;
         console.log('Access Token obtained:', access_token);
         console.log('Refresh Token obtained:', refresh_token);
 
@@ -107,44 +103,14 @@ app.get('/callback', async (req, res) => {
     }
 });
 
-// Endpoint to serve the currently playing track
-function formatTime(ms) {
-    const minutes = Math.floor(ms / 60000); 
-    const seconds = ((ms % 60000) / 1000).toFixed(0);
-    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-}
-
-// Example of how to use this in your currently-playing endpoint
+// Endpoint to serve the currently playing track data to the front-end
 app.get('/currently-playing', async (req, res) => {
     try {
         const trackData = await getCurrentlyPlayingTrack();
-
-        if (trackData && trackData.is_playing) {
-            const trackName = trackData.item.name;
-            const artistName = trackData.item.artists.map(artist => artist.name).join(', ');
-            const albumArt = trackData.item.album.images[0].url;
-            const progress = trackData.progress_ms;
-            const duration = trackData.item.duration_ms;
-
-            res.json({
-                track: trackName,
-                artist: artistName,
-                albumArt: albumArt,
-                progress: formatTime(progress), // Current progress in mm:ss format
-                duration: formatTime(duration), // Total duration in mm:ss format
-                progressPercentage: Math.round((progress / duration) * 100), // Optional: percentage progress
-            });
-        } else {
-            res.json({ message: 'No track currently playing.' });
-        }
+        res.json(trackData);
     } catch (error) {
         res.status(500).json({ error: 'Error fetching currently playing track.' });
     }
-});
-
-// Route to handle the root URL "/"
-app.get('/', (req, res) => {
-    res.redirect('https://josephvo.xyz'); // Replace with your main site's URL
 });
 
 // Start the server
