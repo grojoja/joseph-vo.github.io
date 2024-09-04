@@ -1,29 +1,48 @@
 let currentIndex = 0;
-
+const apiURL = 'https://website-for-me-6626ff31f90f.herokuapp.com/currently-playing';  // Your Heroku app URL
 // Function to fetch the currently playing track from your server
 async function fetchTrackInfo() {
-    try {
-        // Fetch data from your Heroku server
-        const response = await fetch('https://website-for-me-6626ff31f90f.herokuapp.com/currently-playing');
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+  try {
+      const response = await fetch(apiURL);
+      if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
-        const data = await response.json();
+      const data = await response.json();
+      updateTrackInfo(data);  // Call function to update the DOM with track info
+  } catch (error) {
+      console.error('Error fetching track info:', error);
+      hideTrackInfo();  // If there's an error, hide the track info
+  }
+}
+function updateTrackInfo(trackData) {
+  const trackInfoDiv = document.getElementById('track-info');
 
-        // Check if there's a track playing and display it
-        if (data && data.is_playing) {
-            displayTrack(data);  // Call function to display track info
-        } else {
-            document.getElementById('track-info').innerText = 'No track currently playing.';
-        }
-    } catch (error) {
-        console.error('Error fetching track data:', error);
-        document.getElementById('track-info').innerText = 'Error loading track information.';
-    }
+  if (trackData && trackData.is_playing) {
+      const trackName = trackData.item.name;
+      const artistName = trackData.item.artists.map(artist => artist.name).join(', ');
+      const albumArt = trackData.item.album.images[0].url;
+      const progress = trackData.progress_ms;
+      const duration = trackData.item.duration_ms;
+
+      // Display the track info
+      trackInfoDiv.innerHTML = `
+          <img src="${albumArt}" alt="Album Art" style="width: 100px; height: 100px;">
+          <p><strong>${trackName}</strong> by ${artistName}</p>
+          <p>Progress: ${formatTime(progress)} / ${formatTime(duration)}</p>
+      `;
+
+      trackInfoDiv.style.display = 'block';  // Ensure the track info is visible
+  } else {
+      hideTrackInfo();  // Hide the track info if nothing is playing
+  }
 }
 
+// Function to hide the track info
+function hideTrackInfo() {
+  const trackInfoDiv = document.getElementById('track-info');
+  trackInfoDiv.style.display = 'none';  // Hide the track info when nothing is playing
+}
 // Function to display the track info
 function displayTrack(data) {
     const trackName = data.item.name; // Track name from the response

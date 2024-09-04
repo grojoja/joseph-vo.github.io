@@ -111,6 +111,7 @@
             background-color: #fff;
             max-width: 400px;
             text-align: center;
+            display: none;  /* Initially hidden */
         }
 
         #track-info img {
@@ -168,34 +169,8 @@
 
     <!-- Currently Playing Track Section -->
     <div id="track-info">
-        <p>Loading currently playing track...</p>
+        <!-- This will be dynamically populated by JavaScript when a track is playing -->
     </div>
-
-    <script>
-        function displayTrackInfo(data) {
-            const trackInfo = document.getElementById('track-info');
-            trackInfo.innerHTML = `
-                <img src="${data.item.album.images[0].url}" alt="Album Art">
-                <p><strong>${data.item.name}</strong> by ${data.item.artists.map(artist => artist.name).join(', ')}</p>
-                <p>Progress: ${formatTime(data.progress_ms)} / ${formatTime(data.item.duration_ms)}</p>
-            `;
-        }
-
-        function formatTime(ms) {
-            const minutes = Math.floor(ms / 60000);
-            const seconds = ((ms % 60000) / 1000).toFixed(0);
-            return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        }
-
-        // Fetch the currently playing track info from your Heroku server
-        fetch('https://website-for-me-6626ff31f90f.herokuapp.com/currently-playing')
-            .then(response => response.json())
-            .then(data => displayTrackInfo(data))
-            .catch(error => {
-                console.error('Error fetching track info:', error);
-                document.getElementById('track-info').innerHTML = `<p>Error loading track info</p>`;
-            });
-    </script>
 
     <script src="scripts.js"></script> <!-- Link to external JS -->
 </body>
