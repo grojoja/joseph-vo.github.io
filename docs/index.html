@@ -175,14 +175,20 @@
         function displayTrackInfo(data) {
             const trackInfo = document.getElementById('track-info');
             trackInfo.innerHTML = `
-                <img src="${data.albumArt}" alt="Album Art">
-                <p><strong>${data.track}</strong> by ${data.artist}</p>
-                <p>Progress: ${data.progress} / ${data.duration} (${data.progressPercentage}%)</p>
+                <img src="${data.item.album.images[0].url}" alt="Album Art">
+                <p><strong>${data.item.name}</strong> by ${data.item.artists.map(artist => artist.name).join(', ')}</p>
+                <p>Progress: ${formatTime(data.progress_ms)} / ${formatTime(data.item.duration_ms)}</p>
             `;
         }
 
-        // Fetch the currently playing track info from your local server
-        fetch('http://localhost:8888/currently-playing')  // Ensure this server is running locally
+        function formatTime(ms) {
+            const minutes = Math.floor(ms / 60000);
+            const seconds = ((ms % 60000) / 1000).toFixed(0);
+            return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+
+        // Fetch the currently playing track info from your Heroku server
+        fetch('https://website-for-me-6626ff31f90f.herokuapp.com/currently-playing')
             .then(response => response.json())
             .then(data => displayTrackInfo(data))
             .catch(error => {
